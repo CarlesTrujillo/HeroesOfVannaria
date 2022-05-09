@@ -4,13 +4,26 @@ package cat.copernic.m03uf4.heroesofvannaria.Armas;
  *
  * @author Carles
  */
-public class Espasa {
-    
-    private int wpow;
-    private int wvel;
+public class Espasa extends Armas {
     
     public Espasa(int wpow, int wvel) {
         this.wpow = wpow;
+        this.wvel = wvel;
+    }
+
+    public int getWpow() {
+        return wpow;
+    }
+
+    public void setWpow(int wpow) {
+        this.wpow = wpow;
+    }
+
+    public int getWvel() {
+        return wvel;
+    }
+
+    public void setWvel(int wvel) {
         this.wvel = wvel;
     }
 }

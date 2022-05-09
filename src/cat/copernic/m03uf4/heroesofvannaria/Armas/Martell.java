@@ -3,10 +3,11 @@ package cat.copernic.m03uf4.heroesofvannaria.Armas;
 /**
  *
  * @author Carles
+ * @version 1.0
  */
-public class Daga extends Armas{
+public class Martell extends Armas {
     
-    public Daga(int wpow, int wvel) {
+    public Martell(int wpow, int wvel) {
         this.wpow = wpow;
         this.wvel = wvel;
     }

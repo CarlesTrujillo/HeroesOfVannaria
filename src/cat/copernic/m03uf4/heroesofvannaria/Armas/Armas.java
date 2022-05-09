@@ -6,6 +6,6 @@ package cat.copernic.m03uf4.heroesofvannaria.Armas;
  */
 public class Armas {
     
-    private int wpow;
-    private int wvel;
+    public int wpow;
+    public int wvel;
 }
