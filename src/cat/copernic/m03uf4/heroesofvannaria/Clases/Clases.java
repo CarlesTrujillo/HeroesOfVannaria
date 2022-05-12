@@ -12,4 +12,22 @@ public class Clases {
     public int velocitat;
     public int intelligencia;
     public int sort;
+    
+    public void setClase() {
+        String clase = "";
+        
+        switch(clase) {
+            case "Guerrer":
+                break;
+            case "Cavaller":
+                break;
+            case "Valquiria":
+                break;
+            case "Assassi":
+                break;
+        }
+    }
+    public String getClase(String clase) {
+        return clase;
+    }
 }
