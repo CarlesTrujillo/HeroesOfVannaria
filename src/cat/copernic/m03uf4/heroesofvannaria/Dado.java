@@ -7,16 +7,15 @@ package cat.copernic.m03uf4.heroesofvannaria;
  */
 public class Dado {
     
-    int max = 6;
-    int min = 1;
-    int tirada;
+    int caras;
     
-    public Dado() {
+    public Dado(int caras) {
         
-        max = 6;
-        min = 1;
+        this.caras = caras;
         
-        tirada = (int) (Math.random() * (max - min) + min);
+    }
+    public int tirada() {
+        return (int) (Math.random() * caras) + 1;
     }
     
 }

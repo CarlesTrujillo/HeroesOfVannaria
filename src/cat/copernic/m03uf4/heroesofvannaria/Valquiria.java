@@ -5,7 +5,7 @@ package cat.copernic.m03uf4.heroesofvannaria;
  * @author Carles
  * @version 1.0
  */
-public class Valquiria extends Clases{
+public class Valquiria extends Categoria{
     
     public Valquiria(int pow, int con, int vel, int inte, int sor) {
         forca = pow;
