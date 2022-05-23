@@ -6,88 +6,116 @@ package cat.copernic.m03uf4.heroesofvannaria;
  * @version 1.0
  */
 public class Personatge {
-    
-    public String nom;
-    public String clase;
-    public String arma;
-    public int forca;
-    public int constitucio;
-    public int velocitat;
-    public int intelligencia;
-    public int sort;
 
-    public Personatge(String nom, String clase, String arma, int forca, int constitucio, int velocitat, int intelligencia, int sort) {
-        this.nom = nom;
-        this.clase = clase;
-        this.arma = arma;
+    protected int forca;
+    protected int constitucio;
+    protected int velocitat;
+    protected int intelligencia;
+    protected int sort;
+
+    protected int ps;
+    protected int pd;
+    protected int pa;
+    protected int pe;
+
+    protected Arma arma;
+
+    public Personatge(int forca, int cons, int vel, int inte, int sor, Arma arma) {
         this.forca = forca;
-        this.constitucio = constitucio;
-        this.velocitat = velocitat;
-        this.intelligencia = intelligencia;
-        this.sort = sort;
+        this.constitucio = cons;
+        this.velocitat = vel;
+        this.intelligencia = inte;
+        this.sort = sor;
+        
+        setArma(arma);
+        
     }
 
     public int getForca() {
         return forca;
     }
 
-    public void setForca(int forca) {
-        this.forca = forca;
-    }
-
     public int getConstitucio() {
         return constitucio;
-    }
-
-    public void setConstitucio(int constitucio) {
-        this.constitucio = constitucio;
     }
 
     public int getVelocitat() {
         return velocitat;
     }
 
-    public void setVelocitat(int velocitat) {
-        this.velocitat = velocitat;
-    }
-
     public int getIntelligencia() {
         return intelligencia;
-    }
-
-    public void setIntelligencia(int intelligencia) {
-        this.intelligencia = intelligencia;
     }
 
     public int getSort() {
         return sort;
     }
 
+    public int getPs() {
+        return ps;
+    }
+
+    public int getPd() {
+        return pd;
+    }
+
+    public int getPa() {
+        return pa;
+    }
+
+    public int getPe() {
+        return pe;
+    }
+
+    public Arma getArma() {
+        return arma;
+    }
+
+    public void setForca(int forca) {
+        this.forca = forca;
+    }
+
+    public void setConstitucio(int constitucio) {
+        this.constitucio = constitucio;
+    }
+
+    public void setVelocitat(int velocitat) {
+        this.velocitat = velocitat;
+    }
+
+    public void setIntelligencia(int intelligencia) {
+        this.intelligencia = intelligencia;
+    }
+
     public void setSort(int sort) {
         this.sort = sort;
     }
 
-    public String getNom() {
-        return nom;
+    public void setPs(int ps) {
+        this.ps = ps;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setPd(int pd) {
+        this.pd = pd;
     }
 
-    public String getClase() {
-        return clase;
+    public void setPa(int pa) {
+        this.pa = pa;
     }
 
-    public void setClase(String clase) {
-        this.clase = clase;
+    public void setPe(int pe) {
+        this.pe = pe;
     }
 
-    public String getArma() {
-        return arma;
-    }
-
-    public void setArma(String arma) {
+    public void setArma(Arma arma) {
         this.arma = arma;
+        calculaDerivadas();
+    }
+    public void calculaDerivadas() {
+        ps = constitucio + forca;
+        pd = (forca + arma.getWpow()) / 4;
+        pa = intelligencia + sort + arma.getWvel();
+        pe = velocitat + sort + intelligencia;
+
     }
 }

@@ -5,11 +5,24 @@ package cat.copernic.m03uf4.heroesofvannaria;
  * @author Carles
  * @version 1.0
  */
-public class Martell extends Armas {
+public class Arma {
     
-    public Martell(int wpow, int wvel) {
-        this.wpow = wpow;
-        this.wvel = wvel;
+    private String nom;
+    private int wpow;
+    private int wvel;
+    
+    public Arma(String nom, int wpow, int wvel) {
+        this.nom    = nom;
+        this.wpow   = wpow;
+        this.wvel   = wvel;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getWpow() {
@@ -27,4 +40,5 @@ public class Martell extends Armas {
     public void setWvel(int wvel) {
         this.wvel = wvel;
     }
+    
 }

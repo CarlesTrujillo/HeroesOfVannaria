@@ -1,20 +1,14 @@
 package cat.copernic.m03uf4.heroesofvannaria;
 
-import cat.copernic.m03uf4.heroesofvannaria.Categoria;
-
 /**
  *
  * @author Carles
  * @version 1.0
  */
-public class Cavaller extends Categoria{
-    
-    public Cavaller(int pow, int con, int vel, int inte, int sor) {
-        forca = pow;
-        constitucio = con;
-        velocitat = vel;
-        intelligencia = inte;
-        sort = sor;
+public class Cavaller extends Personatge {
+
+    public Cavaller(int forca, int cons, int vel, int inte, int sor, Arma arma) {
+        super(forca, cons, vel, inte, sor, arma);
     }
 
     public int getForca() {
