@@ -6,7 +6,7 @@ package cat.copernic.m03uf4.heroesofvannaria;
  * @version 1.0
  */
 public abstract class Personatge {
-    
+
     protected String nom;
     protected int forca;
     protected int constitucio;
@@ -28,9 +28,9 @@ public abstract class Personatge {
         this.velocitat = vel;
         this.intelligencia = inte;
         this.sort = sor;
-        
+
         this.arma = arma;
-        
+
     }
 
     public String getNom() {
@@ -121,11 +121,20 @@ public abstract class Personatge {
         this.arma = arma;
         calculaDerivadas();
     }
+
     public void calculaDerivadas() {
         ps = constitucio + forca;
         pd = (forca + arma.getWpow()) / 4;
         pa = intelligencia + sort + arma.getWvel();
         pe = velocitat + sort + intelligencia;
 
+    }
+
+    public interface Ordre {
+        void ordre(); 
+    }
+    
+    public interface Caos {
+        void caos();
     }
 }

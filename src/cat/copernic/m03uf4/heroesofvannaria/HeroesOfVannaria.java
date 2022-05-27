@@ -76,7 +76,7 @@ public class HeroesOfVannaria {
         System.out.print("Escull el nom del teu personatge: ");
         String nom = in.nextLine();
 
-        boolean claseValida = true;
+        boolean claseValida = false;
 
         System.out.print("Selecciona la clase: ");
         String clase = in.nextLine();
@@ -84,7 +84,6 @@ public class HeroesOfVannaria {
         System.out.print("Selecciona la teva arma: ");
         String arma = in.nextLine();
 
-        //  Personatge personatge = new Personatge(nom, clase, arma, 15, 9, 6, 7, 7);
     }
 
     public static void combat() {
