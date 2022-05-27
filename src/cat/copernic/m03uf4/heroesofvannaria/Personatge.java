@@ -5,8 +5,9 @@ package cat.copernic.m03uf4.heroesofvannaria;
  * @author Carles
  * @version 1.0
  */
-public class Personatge {
-
+public abstract class Personatge {
+    
+    protected String nom;
     protected int forca;
     protected int constitucio;
     protected int velocitat;
@@ -20,15 +21,24 @@ public class Personatge {
 
     protected Arma arma;
 
-    public Personatge(int forca, int cons, int vel, int inte, int sor, Arma arma) {
+    public Personatge(String nom, int forca, int cons, int vel, int inte, int sor, Arma arma) {
+        this.nom = nom;
         this.forca = forca;
         this.constitucio = cons;
         this.velocitat = vel;
         this.intelligencia = inte;
         this.sort = sor;
         
-        setArma(arma);
+        this.arma = arma;
         
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getForca() {
