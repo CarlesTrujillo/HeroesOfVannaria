@@ -131,10 +131,10 @@ public abstract class Personatge {
     }
 
     public interface Ordre {
-        void ordre(); 
+        void recuperaParcialmentPS(); 
     }
     
     public interface Caos {
-        void caos();
+        void contraAtaca(Dado dados);
     }
 }

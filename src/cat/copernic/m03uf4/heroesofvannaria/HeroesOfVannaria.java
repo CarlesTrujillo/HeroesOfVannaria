@@ -188,7 +188,17 @@ public class HeroesOfVannaria {
     }
 
     public void combat() {
-
+        /*
+        escoger los 2 personajes...
+        
+        si detecta que son iguales repetir seleccion
+        
+        comienza combate
+            quien ataca primero? -- moneda (dado 2 caras)
+            personaje (moneda = 0)atacante, (moneda = 1)defensor
+            cambiar turnos (no se como ngl)
+             
+            */
     }
 
     public void tirada() {

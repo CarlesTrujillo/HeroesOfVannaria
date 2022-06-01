@@ -12,7 +12,7 @@ public class Assassi extends Personatge implements Personatge.Caos {
     }
     
     @Override
-    public void caos() {
+    public void contraAtaca(Dado dados) {
         
     }
 }

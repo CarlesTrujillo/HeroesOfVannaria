@@ -12,7 +12,7 @@ public class Cavaller extends Personatge implements Personatge.Ordre {
     }
     
     @Override
-    public void ordre() {
+    public void recuperaParcialmentPS() {
         
     }
 }
