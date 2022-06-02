@@ -188,6 +188,28 @@ public class HeroesOfVannaria {
     }
 
     public void combat() {
+        boolean seleccionValida = false;
+
+        System.out.println("Personajes:");
+        for (int i = 0; i < personatges.size(); i++) {
+
+            System.out.println(personatges.get(i).toString());
+        }
+        System.out.print("Selecciona el primer personaje: ");
+        String nombrePersonaje1 = in.nextLine();
+        System.out.println("");
+
+        while (!seleccionValida) {
+            System.out.print("Selecciona el segundo personaje: ");
+            String nombrePersonaje2 = in.nextLine();
+
+            if (nombrePersonaje1.equalsIgnoreCase(nombrePersonaje2)) {
+                System.out.println("Personaje no valido, vuelve a intentarlo...");
+                seleccionValida = false;
+            } else {
+                seleccionValida = true;
+            }
+        }
         /*
         escoger los 2 personajes...
         
@@ -198,7 +220,7 @@ public class HeroesOfVannaria {
             personaje (moneda = 0)atacante, (moneda = 1)defensor
             cambiar turnos (no se como ngl)
              
-            */
+         */
     }
 
     public void tirada() {
