@@ -1,10 +1,8 @@
 package cat.copernic.m03uf4.heroesofvannaria;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,8 +16,8 @@ public class HeroesOfVannaria {
 
     static Scanner in = new Scanner(System.in);
 
-    private ArrayList<Personatge> personatges;
-    private Arma[] armas;
+    private final ArrayList<Personatge> personatges;
+    private final Arma[] armas;
 
     public HeroesOfVannaria() {
 
@@ -58,7 +56,7 @@ public class HeroesOfVannaria {
                     crearPersonaje();
                     break;
                 case "2":
-                    combat();
+                    combat(personatges);
                     break;
                 case "X":
                 case "x":
@@ -187,40 +185,62 @@ public class HeroesOfVannaria {
         personatges.add(personatge);
     }
 
-    public void combat() {
-        boolean seleccionValida = false;
-
-        System.out.println("Personajes:");
-        for (int i = 0; i < personatges.size(); i++) {
-
-            System.out.println(personatges.get(i).toString());
+    public void combat(ArrayList<Personatge> arrayPersonatges) {
+        Dado dau1 = new Dado(20);
+        Dado dau2 = new Dado(20);
+        Dado dau3 = new Dado(20);
+        System.out.println("Selecciona el primer combatent:");
+        for (int i = 0; i < arrayPersonatges.size(); i++) {
+            System.out.printf("%d - %s%n", (i + 1), arrayPersonatges.get(i));
         }
-        System.out.print("Selecciona el primer personaje: ");
-        String nombrePersonaje1 = in.nextLine();
-        System.out.println("");
+        int c1 = Utils.llegeixEnterRang(in, 1, arrayPersonatges.size());
+        Personatge atacant = arrayPersonatges.remove(c1 - 1);
 
-        while (!seleccionValida) {
-            System.out.print("Selecciona el segundo personaje: ");
-            String nombrePersonaje2 = in.nextLine();
+        System.out.println("Selecciona el segon combatent: ");
+        for (int i = 0; i < arrayPersonatges.size(); i++) {
+            System.out.printf("%d - %s%n", (i + 1), arrayPersonatges.get(i));
+        }
 
-            if (nombrePersonaje1.equalsIgnoreCase(nombrePersonaje2)) {
-                System.out.println("Personaje no valido, vuelve a intentarlo...");
-                seleccionValida = false;
+        int c2 = Utils.llegeixEnterRang(in, 1, arrayPersonatges.size());
+        Personatge defensor = arrayPersonatges.get(c2 - 1);
+        arrayPersonatges.add(c1 - 1, atacant);
+        Personatge tmp;
+        if (atacant.getVelocitat() < defensor.getVelocitat()) {
+            tmp = atacant;
+            atacant = defensor;
+            defensor = tmp;
+        }
+        System.out.println("------ INICI DEL COMBAT ------");
+        System.out.println(atacant.getNom() + " contra " + defensor.getNom());
+
+        boolean combatFinalitzat = false;
+        int ronda = 1;
+        while (!combatFinalitzat) {
+            System.out.println(" Ronda`" + ronda);
+            ronda++;
+
+            if (atacant.ataca(dau1, dau2, dau3)) {
+                System.out.println(atacant.getNom() + "ataca");
+                if (!defensor.esquiva(dau1, dau2, dau3)) {
+                    System.out.println(defensor.getNom() + "falla l'esquiva");
+                    defensor.repDany(atacant);
+                    System.out.println(defensor.getNom() + "rep" + atacant.getPd() + "punts de dany i la seva PS baixa a " + defensor.getPs());
+                } else {
+                    System.out.println(defensor.getNom() + " esquiva l'atac ");
+                }
             } else {
-                seleccionValida = true;
+                System.out.println(atacant.getNom() + "falla l'atac ");
+            }
+            if (defensor.getPs() <= 0) {
+                combatFinalitzat = true;
+                System.out.println(defensor.getNom() + " cau derrotat ");
+                System.out.println(atacant.getNom() + " guanya el combat!!");          
+            } else {
+                tmp = atacant;
+                atacant = defensor;
+                defensor = tmp;
             }
         }
-        /*
-        escoger los 2 personajes...
-        
-        si detecta que son iguales repetir seleccion
-        
-        comienza combate
-            quien ataca primero? -- moneda (dado 2 caras)
-            personaje (moneda = 0)atacante, (moneda = 1)defensor
-            cambiar turnos (no se como ngl)
-             
-         */
     }
 
     public void tirada() {
@@ -234,7 +254,7 @@ public class HeroesOfVannaria {
 
     private ArrayList<Personatge> llegirFitxer(String nomFitxer) {
 
-        ArrayList<Personatge> personatges = new ArrayList<Personatge>();
+        ArrayList<Personatge> personatges = new ArrayList<>();
         try {
             BufferedReader entrada = new BufferedReader(
                     new FileReader(nomFitxer));

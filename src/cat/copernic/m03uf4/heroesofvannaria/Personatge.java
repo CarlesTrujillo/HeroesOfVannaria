@@ -122,6 +122,36 @@ public abstract class Personatge {
         calculaDerivadas();
     }
 
+    public boolean ataca(Dado dau1, Dado dau2, Dado dau3) {
+        int tirada = 0;
+        tirada += dau1.tirada();
+        tirada += dau2.tirada();
+        tirada += dau3.tirada();
+
+        if (tirada <= pa) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean esquiva(Dado dau1, Dado dau2, Dado dau3) {
+        int tirada = 0;
+        tirada += dau1.tirada();
+        tirada += dau2.tirada();
+        tirada += dau3.tirada();
+
+        if (tirada <= pe) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void repDany(Personatge atacant) {
+        ps -= atacant.pd;
+    }
+
     public void calculaDerivadas() {
         ps = constitucio + forca;
         pd = (forca + arma.getWpow()) / 4;
@@ -131,10 +161,12 @@ public abstract class Personatge {
     }
 
     public interface Ordre {
-        void recuperaParcialmentPS(); 
+
+        void recuperaParcialmentPS();
     }
-    
+
     public interface Caos {
+
         void contraAtaca(Dado dados);
     }
 }
